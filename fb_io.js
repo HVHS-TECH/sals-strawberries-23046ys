@@ -23,7 +23,7 @@
     if (_user) {
         console.log("User is logged in")
         GLOBAL_user = _user;//Save the user details object to a global variable
-        console.log(GLOBAL_user.displayName)
+        console.log(GLOBAL_user.uid)
     } else {
         console.log("User is NOT logged in - Starting the popup process")
         fb_popupLogin();
@@ -39,6 +39,6 @@
     GLOBAL_user = result.user;  // Save the user details object to a global variable
     console.log("User has logged in")
     });
-      console.log(GLOBAL_user.displayName)
+      console.log(GLOBAL_user.uid)
   }
 
