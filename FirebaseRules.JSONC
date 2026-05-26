@@ -1,0 +1,15 @@
+{
+  // Allow anyone to read data
+  // Only authenticated content
+  // owners can make changes to their data
+  "rules": {
+    ".read": true,
+    ".write": false,
+    "users": {
+      "$uid": {
+        ".read": true,
+        ".write": "auth.uid === $uid"
+      }
+    }
+  }
+}

@@ -6,10 +6,15 @@
     storageBucket: "yuv-singh-12comp-1169b.firebasestorage.app",
     messagingSenderId: "475182460149",
     appId: "1:475182460149:web:6f23899c85b799f27829bc"
+
+    
   };
 
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
+
+ 
+
 
   // This log prints the firebase object to the console to show that it is working.
   // As soon as you have the script working, delete this log.

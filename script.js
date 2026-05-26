@@ -27,7 +27,7 @@ function writeEmail(){
         EMAIL.innerHTML = "<p>You need to login.</p>";
     }else{ 
         
-        firebase.database().ref('/users/GLOBAL_user.uid').orderByValue().once('value', fb_getFavouriteFruit, fb_readError);
+        firebase.database().ref('/users/'+GLOBAL_user.uid).once('value', fb_getFavouriteFruit, fb_readError);
         
         if( favoriteFruit == null || userName== null || fruitQuantity == null || favoriteFruit == "" || userName== "" || favoriteFruit == " " || userName== " " || fruitQuantity == NaN ){
         EMAIL.innerHTML = "<p>You need to fill in the form.</p>";
@@ -50,10 +50,9 @@ function writeEmail(){
 function fb_getFavouriteFruit(snapshot) {
     var fruits = snapshot.val()
 
-    userName= GLOBAL_user.uid["User"];
-    favoriteFruit= GLOBAL_user.uid["Fruit"]
-    fruitQuantity= GLOBAL_user.uid["Number of Fruit"]
-
+    userName= fruits[GLOBAL_user.uid["User"]];
+    favoriteFruit= fruits[GLOBAL_user.uid["Fruit"]];
+    fruitQuantity= fruits[GLOBAL_user.uid["Number of Fruit"]];
 }
 
 function fb_readFavouriteFruits() {
