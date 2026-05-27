@@ -27,10 +27,10 @@ function writeEmail(){
         EMAIL.innerHTML = "<p>You need to login.</p>";
     }else{ 
         
-        firebase.database().ref('/users/'+GLOBAL_user.uid).once('value', fb_getFavouriteFruit, fb_readError);
+        
         
         if( favoriteFruit == null || userName== null || fruitQuantity == null || favoriteFruit == "" || userName== "" || favoriteFruit == " " || userName== " " || fruitQuantity == NaN ){
-        EMAIL.innerHTML = "<p>You need to fill in the form.</p>";
+        firebase.database().ref('/users/'+GLOBAL_user.uid).once('value', fb_getFavouriteFruit, fb_readError);
     }else{
         EMAIL.innerHTML = "<p>Welcome to Sals Strawberries, "+userName+".</p>";
         if(fruitQuantity <=0){
@@ -50,27 +50,40 @@ function writeEmail(){
 function fb_getFavouriteFruit(snapshot) {
     var fruits = snapshot.val()
 
-    userName= fruits[GLOBAL_user.uid["User"]];
-    favoriteFruit= fruits[GLOBAL_user.uid["Fruit"]];
-    fruitQuantity= fruits[GLOBAL_user.uid["Number of Fruit"]];
+    userName= fruits["User"];
+    favoriteFruit= fruits["Fruit"];
+    fruitQuantity= fruits["Number of Fruit"];
+    if(favoriteFruit == null || userName== null || fruitQuantity == null ){
+        EMAIL.innerHTML = "<p>You need to fill in the form.</p>";
+    }else {
+       writeEmail() 
+    }
+    
+
 }
 
 function fb_readFavouriteFruits() {
     console.log("Reading Fruit");
-    firebase.database().ref('/users').orderByValue().once('value', fb_displayFavouriteFruits, fb_readError);
+    firebase.database().ref('/users/').orderByValue().once('value', fb_displayFavouriteFruits, fb_readError);
 }
 
 function fb_displayFavouriteFruits(snapshot){
   var dbData = snapshot.val();
+  const FRUIT = document.getElementById("popularFruit");
     if (dbData == null) { 
         console.log('There was no record when trying to read the message');
-        HTML_OUTPUT.innerHTML = 'There was no record when trying to read the message';
+        
     }else{
   snapshot.forEach(fb_showFruit)
+  FRUIT.innerHTML = "<p></p>";
     }
 }
 
 function fb_showFruit(child){
     const FRUIT = document.getElementById("popularFruit");
-  console.log(child["Fruit"]);
+    var somFrui = child.val()["Fruit"];
+  console.log(somFrui);
+
+
+  FRUIT.innerHTML += "<p>e</p>";
 }
