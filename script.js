@@ -59,6 +59,7 @@ function fb_getFavouriteFruit(snapshot) {
        writeEmail() 
     }
     
+    
 
 }
 
@@ -74,8 +75,8 @@ function fb_displayFavouriteFruits(snapshot){
         console.log('There was no record when trying to read the message');
         
     }else{
+  FRUIT.innerHTML = "<p></p>";      
   snapshot.forEach(fb_showFruit)
-  FRUIT.innerHTML = "<p></p>";
     }
 }
 
@@ -85,5 +86,5 @@ function fb_showFruit(child){
   console.log(somFrui);
 
 
-  FRUIT.innerHTML += "<p>e</p>";
+  FRUIT.innerHTML += "<p>"+somFrui+"</p>";
 }

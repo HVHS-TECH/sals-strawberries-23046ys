@@ -24,10 +24,13 @@
         console.log("User is logged in")
         GLOBAL_user = _user;//Save the user details object to a global variable
         console.log(GLOBAL_user.uid)
+        console.log(GLOBAL_user)
     } else {
         console.log("User is NOT logged in - Starting the popup process")
         fb_popupLogin();
     }
+          const IMAGE = document.getElementById("imag");
+     IMAGE.innerHTML = "<img src="+GLOBAL_user.photoURL+">";
 }
 
 
@@ -40,5 +43,10 @@
     console.log("User has logged in")
     });
       console.log(GLOBAL_user.uid)
+      console.log(GLOBAL_user)
+
+      const IMAGE = document.getElementById("imag");
+     IMAGE.innerHTML = "<img src="+GLOBAL_user.photoURL+">";
+     
   }
 

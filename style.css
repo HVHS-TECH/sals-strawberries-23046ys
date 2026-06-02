@@ -14,6 +14,16 @@ body {
   box-shadow: 0 0 10px rgba(73, 42, 85, 0.849);
 }
 
+.eE{
+  color: #2e0466;
+  font-family: Arial, sans-serif;
+}
+
+.eE:hover{
+  color: #ff0909;
+  font-family: Arial, sans-serif;
+}
+
 h1 {
   color: rgb(109, 47, 160);
   font-size: 2.5rem;
